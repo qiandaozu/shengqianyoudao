@@ -3,8 +3,10 @@ package cn.qiandao.shengqianyoudao.service.impl;
 import cn.qiandao.shengqianyoudao.mapper.LoginMapper;
 import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.service.LoginService;
+import cn.qiandao.shengqianyoudao.util.CookieUtils;
 import cn.qiandao.shengqianyoudao.util.CreatUserName;
 import cn.qiandao.shengqianyoudao.util.DateTime;
+import cn.qiandao.shengqianyoudao.util.EncryptionToDecrypt;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
@@ -52,6 +54,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     //发送短信
+    @Override
     public void getcode(String sphone, int tcNumber) {
         String templateNumber = "";
 
@@ -164,6 +167,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     //比对手机号码是否已经注册
+    @Override
     public Boolean verifyPhoneNumber(String phone) {
         if (lm.getPhone(phone) == null) {
             return false;
@@ -173,6 +177,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     //获取用户信息
+    @Override
     public User getUserInfo(String phone) {
         User u = lm.getUserInfo(phone);
         u.setRole(lm.getrole(u.getNumber()));
@@ -212,6 +217,7 @@ public class LoginServiceImpl implements LoginService {
         }
     }
 
+    @Override
     public String changePwd(String phone, String pwd) {
         pwd = new Md5Hash(pwd, phone, 3).toString();
         System.out.println(phone);
