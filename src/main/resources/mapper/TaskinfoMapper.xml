@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qiandao.shengqianyoudao.mapper.TaskinfoMapper">
+  <resultMap id="BaseResultMap" type="cn.qiandao.shengqianyoudao.pojo.Taskinfo">
+    <!--@mbg.generated-->
+    <!--@Table taskinfo-->
+    <id column="ti_id" jdbcType="INTEGER" property="tiId" />
+    <result column="ti_tasknumber" jdbcType="VARCHAR" property="tiTasknumber" />
+    <result column="ti_usernumber" jdbcType="VARCHAR" property="tiUsernumber" />
+    <result column="ti_title" jdbcType="VARCHAR" property="tiTitle" />
+    <result column="ti_type" jdbcType="INTEGER" property="tiType" />
+    <result column="ti_money" jdbcType="DECIMAL" property="tiMoney" />
+    <result column="ti_peoplelimit" jdbcType="INTEGER" property="tiPeoplelimit" />
+    <result column="ti_datelimit" jdbcType="TIMESTAMP" property="tiDatelimit" />
+    <result column="ti_timelimit" jdbcType="INTEGER" property="tiTimelimit" />
+    <result column="ti_timeslimit" jdbcType="INTEGER" property="tiTimeslimit" />
+    <result column="ti_link" jdbcType="VARCHAR" property="tiLink" />
+    <result column="ti_describe" jdbcType="VARCHAR" property="tiDescribe" />
+    <result column="ti_require" jdbcType="VARCHAR" property="tiRequire" />
+    <result column="ti_completepeople" jdbcType="INTEGER" property="tiCompletepeople" />
+    <result column="ti_msimg" jdbcType="VARCHAR" property="tiMsimg" />
+    <result column="ti_pageview" jdbcType="INTEGER" property="tiPageview" />
+    <result column="ti_state" jdbcType="INTEGER" property="tiState" />
+    <result column="ti_date" jdbcType="TIMESTAMP" property="tiDate" />
+    <result column="ti_experience" jdbcType="INTEGER" property="tiExperience" />
+    <result column="ti_audit" jdbcType="INTEGER" property="tiAudit" />
+    <result column="ti_yqimg" jdbcType="VARCHAR" property="tiYqimg" />
+    <collection property="user" ofType="cn.qiandao.shengqianyoudao.pojo.User" column="id">
+      <result column="ui_number" jdbcType="VARCHAR" property="number" />
+      <result column="ui_name" jdbcType="VARCHAR" property="username" />
+      <result column="ui_img" jdbcType="VARCHAR" property="img" />
+    </collection>
+     <!--<association property="userinfo" resultMap="BaseResultMap02" />-->
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ti_id, ti_tasknumber, ti_usernumber, ti_title, ti_type, ti_money, ti_peoplelimit, 
+    ti_datelimit, ti_timelimit, ti_timeslimit, ti_link, ti_describe, ti_require, ti_completepeople, 
+    ti_msimg, ti_pageview, ti_state, ti_date, ti_experience, ti_audit, ti_yqimg
+  </sql>
+
+
+  <select id="selectBytitasknumber" resultMap="BaseResultMap">
+    select * from taskinfo where ti_id=#{tiid}
+  </select>
+
+  <select id="selectByTiTitle" resultType="cn.qiandao.shengqianyoudao.pojo.Taskinfo" resultMap="BaseResultMap">
+    SELECT
+      ti.ti_id,
+      ti.ti_tasknumber,
+      ti.ti_usernumber,
+      ti.ti_title,
+      ti.ti_type,
+      ti.ti_money,
+      ti.ti_peoplelimit,
+      ti.ti_datelimit,
+      ti.ti_timelimit,
+      ti.ti_timeslimit,
+      ti.ti_link,
+      ti.ti_describe,
+      ti.ti_require,
+      ti.ti_completepeople,
+      ti.ti_msimg,
+      ti.ti_pageview,
+      ti.ti_state,
+      ti.ti_date,
+      ti.ti_experience,
+      ti.ti_audit,
+      ti.ti_yqimg,
+      ui.ui_number,
+      ui.ui_name,
+      ui.ui_img
+    FROM
+      taskinfo AS ti ,
+      userinfo AS ui
+    WHERE
+      ti.ti_usernumber = ui.ui_number AND
+      ti.ti_id = #{tiid}
+  </select>
+
+</mapper>
