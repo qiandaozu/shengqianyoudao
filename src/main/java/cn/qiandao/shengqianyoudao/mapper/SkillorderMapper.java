@@ -1,6 +1,6 @@
 package cn.qiandao.shengqianyoudao.mapper;
 
-import cn.qiandao.pojo.Skillorder;
+import cn.qiandao.shengqianyoudao.pojo.Skillorder;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
