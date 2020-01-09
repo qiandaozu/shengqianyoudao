@@ -14,13 +14,22 @@ public interface SkillorderService {
      * @param skillorder 技能订单实体类
      * @return
      */
-    Skillorder addKillOrder(Skillorder skillorder);
+    int addKillOrder(Skillorder skillorder);
 
     /**
-     * 修改订单状态
-     * 分页查询订单
-     *
+     * 修改订单 订单的状态
+     * @param orderId 订单号
+     * @param state 状态
+     * @return
      */
+    int updateOrder(String orderId,int state);
+
+    /**
+     * 查询订单
+     * @param orderid
+     * @return
+     */
+    Skillorder selectOrder(String orderid);
 
     /**
      * 用户技能查询
@@ -29,10 +38,5 @@ public interface SkillorderService {
      */
     List<Skillorder> selectUserOrder(String user);
 
-    /**
-     * 购买的技能查询
-     * @param Byuser
-     * @return
-     */
-    List<Skillorder> selectByOrder(String Byuser);
+     List<Skillorder> selectByOrder(String Byuser);
 }

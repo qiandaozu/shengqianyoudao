@@ -23,19 +23,33 @@ public class SkillorderController {
     @Autowired
     private SkillorderService skillorderService;
 
-    @ApiOperation(value = "添加订单信息,返回订单")
-    @PostMapping("/order")
-    public Skillorder addSkillOrder(@RequestBody Skillorder skillorder){
-        return skillorderService.addKillOrder(skillorder);
+    @ApiOperation(value = "添加订单信息,返回订单id")
+    @PostMapping("/Order")
+    public int addSkillOrder(@RequestBody Skillorder skillorder){
+        System.out.println(skillorder);
+        int order = skillorderService.addKillOrder(skillorder);
+        return order;
     }
 
-    @ApiOperation(value = "查询用户接收的技能订单，用户界面的")
+    @ApiOperation(value = "修改订单状态")
+    @GetMapping("/updateOrder")
+    public int Order(@RequestParam("orderId") String orderId,@RequestParam("state") int state){
+        return skillorderService.updateOrder(orderId,state);
+    }
+
+    @ApiOperation(value = "查询订单信息")
+    @GetMapping("/selectOrder")
+    public  Skillorder killOrder(@RequestParam String orderId){
+        return skillorderService.selectOrder(orderId);
+    }
+
+    @ApiOperation(value = "查询用户接收的技能订单，用户模块")
     @GetMapping("/userorders")
     public List<Skillorder> getuserOrders(String user){
         return skillorderService.selectUserOrder(user);
     }
 
-    @ApiOperation(value = "查询用户购买的技能，用户界面的")
+    @ApiOperation(value = "查询用户购买的技能，用户模块")
     @GetMapping("/byorders")
     public List<Skillorder> getByOrders(String user){
         return skillorderService.selectByOrder(user);

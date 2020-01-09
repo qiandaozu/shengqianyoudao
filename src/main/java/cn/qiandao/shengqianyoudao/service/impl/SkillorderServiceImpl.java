@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -34,24 +35,38 @@ public class SkillorderServiceImpl implements SkillorderService {
 
 
     @Override
-    public Skillorder addKillOrder(Skillorder skillorder) {
+    public int addKillOrder(Skillorder skillorder) {
         //当前时间（为了简化模板）
         Date orderTime = new Date();
+        Calendar now = Calendar.getInstance();
         //雪花算法生成随机数
         String orderNo = String.valueOf(snowFlake.nextId());
 
         //订单编号
         skillorder.setSoNumber(orderNo);
-        //购买的时间
+        //购买的时间(订单时间)
         skillorder.setSoPurchasingdate(orderTime);
-        //最后更改的时间
-        skillorder.setSoEnddate(orderTime);
+
         Skillsinfo skillsinfo = skillsinfoService.selectBySiSerialnumber(skillorder.getSoSkillnumber());
         skillorder.setTitle(skillsinfo.getSiTitle());
-        int insert = skillorderMapper.insert(skillorder);
-//        System.out.println(insert);
-//        Skillorder skillorder1 = skillorderMapper.selectOne(skillorder);
-        return skillorder;
+        int i = skillorderMapper.insertSelective(skillorder);
+        System.out.println(i);
+        return i;
+    }
+    //修改技能订单状态
+    @Override
+    public int updateOrder(String orderId,int state) {
+        Skillorder skillorder = new Skillorder();
+        skillorder.setSoNumber(orderId);
+        skillorder.setSoState(state);
+        return skillorderMapper.updateByPrimaryKeySelective(skillorder);
+    }
+    //查询订单信息
+    @Override
+    public Skillorder selectOrder(String orderid) {
+//        Skillorder skillorder = new Skillorder();
+//        skillorder.setSoNumber(orderid);
+        return skillorderMapper.selectByPrimaryKey(orderid);
     }
 
     @Override
