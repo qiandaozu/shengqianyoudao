@@ -25,6 +25,7 @@ public class SkillorderServiceImpl implements SkillorderService {
 
     @Autowired
     private SkillorderMapper skillorderMapper;
+
     @Autowired
     private SkillsinfoService skillsinfoService;
 
@@ -45,11 +46,12 @@ public class SkillorderServiceImpl implements SkillorderService {
         skillorder.setSoPurchasingdate(orderTime);
         //最后更改的时间
         skillorder.setSoEnddate(orderTime);
-
+        Skillsinfo skillsinfo = skillsinfoService.selectBySiSerialnumber(skillorder.getSoSkillnumber());
+        skillorder.setTitle(skillsinfo.getSiTitle());
         int insert = skillorderMapper.insert(skillorder);
-        System.out.println(insert);
-        Skillorder skillorder1 = skillorderMapper.selectOne(skillorder);
-        return skillorder1;
+//        System.out.println(insert);
+//        Skillorder skillorder1 = skillorderMapper.selectOne(skillorder);
+        return skillorder;
     }
 
     @Override
