@@ -2,6 +2,7 @@ package cn.qiandao.shengqianyoudao.service.impl;
 
 import cn.qiandao.shengqianyoudao.mapper.UserMapper;
 import cn.qiandao.shengqianyoudao.pojo.User;
+import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,24 +19,25 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public int save(User user) {
+    public int save(Userinfo user) {
         return userMapper.insert(user);
     }
 
     @Override
-    public User findById(String id) {
-        User u = new User();
+    public Userinfo findById(String id) {
+        Userinfo u = new Userinfo();
         u.setNumber(id);
         return userMapper.selectOne(u);
+        //return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int delete(User user) {
+    public int delete(Userinfo user) {
         return userMapper.delete(user);
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Userinfo> findAll() {
         return userMapper.selectAll();
     }
 
