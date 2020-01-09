@@ -1,9 +1,6 @@
 package cn.qiandao.shengqianyoudao.controller;
 
-import cn.qiandao.shengqianyoudao.pojo.Skillcomment;
-import cn.qiandao.shengqianyoudao.pojo.Skillsinfo;
-import cn.qiandao.shengqianyoudao.pojo.Skilluserrelationship;
-import cn.qiandao.shengqianyoudao.pojo.User;
+import cn.qiandao.shengqianyoudao.pojo.*;
 import cn.qiandao.shengqianyoudao.service.SkillcommentService;
 import cn.qiandao.shengqianyoudao.service.SkillsinfoService;
 import cn.qiandao.shengqianyoudao.service.UserService;
@@ -48,7 +45,7 @@ public class SkillsinfoController {
         Skillsinfo skillsinfo = skillsinfoService.selectBySiSerialnumber(skillId);
         List<Skillcomment> skillcomments = skillcommentService.selSkillcomment(skillId);
         Skilluserrelationship user = skillsinfoService.getUser(skillId);
-        User users = userService.findById(user.getSurUsernumber());
+        Userinfo users = userService.findById(user.getSurUsernumber());
         map.put("skillsinfo",skillsinfo);
         map.put("skillcomments",skillcomments);
         map.put("users",users);
@@ -63,7 +60,7 @@ public class SkillsinfoController {
 
     @GetMapping("/seluser/{uid}")
     @ResponseBody
-    public User selectUser(@PathVariable("uid") String uid){
+    public Userinfo selectUser(@PathVariable("uid") String uid){
         return userService.findById(uid);
     }
 }

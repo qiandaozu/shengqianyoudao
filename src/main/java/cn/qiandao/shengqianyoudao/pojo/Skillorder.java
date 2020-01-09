@@ -1,16 +1,23 @@
 package cn.qiandao.shengqianyoudao.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
+@ToString
 @Table(name = "skillorder")
 public class Skillorder implements Serializable {
     /**
     * id
     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer soId;
 
     /**
@@ -22,7 +29,7 @@ public class Skillorder implements Serializable {
     /**
     * 技能编号
     */
-    @Column(name = "so_Skill")
+    @Column(name = "so_skillnumber")
     private String soSkillnumber;
 
     /**
@@ -33,8 +40,13 @@ public class Skillorder implements Serializable {
     /**
     * 购买时间
     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date soPurchasingdate;
 
+    /**
+     * 最后更改时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date soEnddate;
 
     /**
@@ -45,7 +57,7 @@ public class Skillorder implements Serializable {
     /**
     * 金额
     */
-    private Long soMoney;
+    private BigDecimal soMoney;
 
     /**
     * 付款方式（填写序号）
@@ -57,105 +69,12 @@ public class Skillorder implements Serializable {
     */
     private Integer soState;
 
+    /**
+     * 发布技能的用户
+     */
+    private String soSkilluser;
+
     private static final long serialVersionUID = 1L;
 
-    public Integer getSoId() {
-        return soId;
-    }
 
-    public void setSoId(Integer soId) {
-        this.soId = soId;
-    }
-
-    public String getSoNumber() {
-        return soNumber;
-    }
-
-    public void setSoNumber(String soNumber) {
-        this.soNumber = soNumber;
-    }
-
-    public String getSoSkillnumber() {
-        return soSkillnumber;
-    }
-
-    public void setSoSkillnumber(String soSkillnumber) {
-        this.soSkillnumber = soSkillnumber;
-    }
-
-    public String getSoBuyusernumber() {
-        return soBuyusernumber;
-    }
-
-    public void setSoBuyusernumber(String soBuyusernumber) {
-        this.soBuyusernumber = soBuyusernumber;
-    }
-
-    public Date getSoPurchasingdate() {
-        return soPurchasingdate;
-    }
-
-    public void setSoPurchasingdate(Date soPurchasingdate) {
-        this.soPurchasingdate = soPurchasingdate;
-    }
-
-    public Date getSoEnddate() {
-        return soEnddate;
-    }
-
-    public void setSoEnddate(Date soEnddate) {
-        this.soEnddate = soEnddate;
-    }
-
-    public Integer getSoQuantity() {
-        return soQuantity;
-    }
-
-    public void setSoQuantity(Integer soQuantity) {
-        this.soQuantity = soQuantity;
-    }
-
-    public Long getSoMoney() {
-        return soMoney;
-    }
-
-    public void setSoMoney(Long soMoney) {
-        this.soMoney = soMoney;
-    }
-
-    public Integer getSoPaymentmethod() {
-        return soPaymentmethod;
-    }
-
-    public void setSoPaymentmethod(Integer soPaymentmethod) {
-        this.soPaymentmethod = soPaymentmethod;
-    }
-
-    public Integer getSoState() {
-        return soState;
-    }
-
-    public void setSoState(Integer soState) {
-        this.soState = soState;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", soId=").append(soId);
-        sb.append(", soNumber=").append(soNumber);
-        sb.append(", soSkillnumber=").append(soSkillnumber);
-        sb.append(", soBuyusernumber=").append(soBuyusernumber);
-        sb.append(", soPurchasingdate=").append(soPurchasingdate);
-        sb.append(", soEnddate=").append(soEnddate);
-        sb.append(", soQuantity=").append(soQuantity);
-        sb.append(", soMoney=").append(soMoney);
-        sb.append(", soPaymentmethod=").append(soPaymentmethod);
-        sb.append(", soState=").append(soState);
-        sb.append("]");
-        return sb.toString();
-    }
 }

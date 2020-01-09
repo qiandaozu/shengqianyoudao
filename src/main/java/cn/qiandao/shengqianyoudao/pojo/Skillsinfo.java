@@ -98,6 +98,6 @@ public class Skillsinfo implements Serializable {
     @Column(name = "si_grade")
     private Integer siGrade;
     @Transient
-    private User u;
+    private Userinfo u;
     private static final long serialVersionUID = 1L;
 }
