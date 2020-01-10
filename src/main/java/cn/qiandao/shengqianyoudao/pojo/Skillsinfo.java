@@ -12,16 +12,11 @@ import java.math.BigDecimal;
 @Data
 @Table(name = "skillsinfo")
 public class Skillsinfo implements Serializable {
-    /**
-     * id
-     */
-    @Id
-    private Integer siId;
 
     /**
      * 技能编号
      */
-    @Column(name = "si_serialnumber")
+    @Id
     private String siSerialnumber;
 
     /**

@@ -1,5 +1,6 @@
 package cn.qiandao.shengqianyoudao.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 
@@ -17,7 +18,7 @@ public class Skillorder implements Serializable {
     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String soNumber;
+    private Long soNumber;
 
     /**
     * 技能编号

@@ -3,6 +3,7 @@ package cn.qiandao.shengqianyoudao.service.impl;
 
 import cn.qiandao.shengqianyoudao.mapper.TaskinfoMapper;
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
+import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.TaskinfoService;
 import cn.qiandao.shengqianyoudao.service.UserService;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -79,7 +81,22 @@ public class TaskinfoServiceImpl implements TaskinfoService {
         return taskinfoMapper.select(taskinfo);
     }
 
-
+    //查询任务的数量（不同状态）
+    @Override
+    public int getTackCount(String user, int state) {
+        Taskinfo taskinfo = new Taskinfo();
+        taskinfo.setTiUsernumber(user);
+        taskinfo.setTiState(state);
+        return taskinfoMapper.selectCount(taskinfo);
+    }
+    //查询任务后展示(不同状态)
+    @Override
+    public List<Taskinfo> getTaskState(String user, int state) {
+        Taskinfo taskinfo = new Taskinfo();
+        taskinfo.setTiUsernumber(user);
+        taskinfo.setTiState(state);
+        return taskinfoMapper.select(taskinfo);
+    }
 
 
 }

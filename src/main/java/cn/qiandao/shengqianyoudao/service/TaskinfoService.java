@@ -2,6 +2,7 @@ package cn.qiandao.shengqianyoudao.service;
 
 
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
+import org.apache.ibatis.javassist.runtime.Desc;
 
 import java.util.List;
 
@@ -32,6 +33,20 @@ public interface TaskinfoService {
      * @return
      */
     List<Taskinfo> selectTasks(String user);
+    /**
+     * 查询任务的数量(不同状态)
+     * @param user 用户编号
+     * @param state 状态
+     * @return
+     */
+    int getTackCount(String user, int state);
 
+    /**
+     * 查询任务后展示(不同状态)
+     * @param user 用户编号
+     * @param state 状态
+     * @return
+     */
+    List<Taskinfo> getTaskState(String user, int state);
 
 }

@@ -2,7 +2,9 @@ package cn.qiandao.shengqianyoudao.controller;
 
 
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
+import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.TaskinfoService;
+import cn.qiandao.shengqianyoudao.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -48,7 +50,7 @@ public class TaskinfoController {
 
     @GetMapping("/selectUpTask/{type}/{sort}")
     @ApiOperation(value = "任务排序",notes = "任务排序")
-    public List<Taskinfo> selectUp(@PathVariable("type") String type, @PathVariable("sort") String sort){
+    public List<Taskinfo> selectUp(@PathVariable("type") String type,@PathVariable("sort") String sort){
         List<Taskinfo> taskinfos = taskinfoService.selectByExample(type, sort);
         return taskinfos;
     }
@@ -60,5 +62,16 @@ public class TaskinfoController {
         return taskinfoService.selectTasks(user);
     }
 
+    @GetMapping("/getTackCount/{user}/{state}")
+    @ApiOperation(value = "查询任务的数量（不同状态）",notes = "查询任务的数量（不同状态）")
+    public int getTackCount(@PathVariable("user")String user,@PathVariable("state") int state){
+        return taskinfoService.getTackCount(user,state);
+    }
+
+    @GetMapping("/getTaskState/{user}/{state}")
+    @ApiOperation(value = "查询任务后展示(不同状态)",notes = "获取用户发布的任务")
+    public List<Taskinfo> getTaskState(@PathVariable("user")String user,@PathVariable("state") int state){
+        return taskinfoService.getTaskState(user,state);
+    }
 
 }

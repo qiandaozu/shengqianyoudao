@@ -25,25 +25,21 @@ public class SkillorderController {
 
     @ApiOperation(value = "添加订单信息,返回订单id")
     @PostMapping("/Order")
-    public int addSkillOrder(@RequestBody Skillorder skillorder){
+    public Long addSkillOrder(@RequestBody Skillorder skillorder){
         System.out.println(skillorder);
-        int order = skillorderService.addKillOrder(skillorder);
+        Long order = skillorderService.addKillOrder(skillorder);
         return order;
     }
 
     @ApiOperation(value = "修改订单状态")
-    @GetMapping("/updateOrder")
-
-    public int Order(@RequestParam("orderId") String orderId, @RequestParam("state") int state){
-
-
+    @PutMapping("/updateOrder")
+    public int Order(@RequestParam("orderId") Long orderId,@RequestParam("state") int state){
         return skillorderService.updateOrder(orderId,state);
     }
 
     @ApiOperation(value = "查询订单信息")
     @GetMapping("/selectOrder")
-
-    public Skillorder killOrder(@RequestParam String orderId){
+    public  Skillorder killOrder(@RequestParam Long orderId){
         return skillorderService.selectOrder(orderId);
     }
 

@@ -11,9 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.math.BigDecimal;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,22 +26,18 @@ public class SkillorderServiceImpl implements SkillorderService {
 
     @Autowired
     private SkillorderMapper skillorderMapper;
-
     @Autowired
     private SkillsinfoService skillsinfoService;
-
     //雪花算法
     private SnowFlake snowFlake = new SnowFlake(2,3);
 
-
     @Override
-    public int addKillOrder(Skillorder skillorder) {
+    public Long addKillOrder(Skillorder skillorder) {
         //当前时间（为了简化模板）
         Date orderTime = new Date();
         Calendar now = Calendar.getInstance();
         //雪花算法生成随机数
-        String orderNo = String.valueOf(snowFlake.nextId());
-
+        Long orderNo = snowFlake.nextId();
         //订单编号
         skillorder.setSoNumber(orderNo);
         //购买的时间(订单时间)
@@ -51,13 +45,13 @@ public class SkillorderServiceImpl implements SkillorderService {
 
         Skillsinfo skillsinfo = skillsinfoService.selectBySiSerialnumber(skillorder.getSoSkillnumber());
         skillorder.setTitle(skillsinfo.getSiTitle());
-        int i = skillorderMapper.insertSelective(skillorder);
+        int i = skillorderMapper.insert(skillorder);
         System.out.println(i);
-        return i;
+        return orderNo;
     }
     //修改技能订单状态
     @Override
-    public int updateOrder(String orderId,int state) {
+    public int updateOrder(Long orderId,int state) {
         Skillorder skillorder = new Skillorder();
         skillorder.setSoNumber(orderId);
         skillorder.setSoState(state);
@@ -65,7 +59,7 @@ public class SkillorderServiceImpl implements SkillorderService {
     }
     //查询订单信息
     @Override
-    public Skillorder selectOrder(String orderid) {
+    public Skillorder selectOrder(Long orderid) {
 //        Skillorder skillorder = new Skillorder();
 //        skillorder.setSoNumber(orderid);
         return skillorderMapper.selectByPrimaryKey(orderid);

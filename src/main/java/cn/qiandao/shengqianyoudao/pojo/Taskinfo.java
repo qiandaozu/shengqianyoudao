@@ -16,15 +16,10 @@ import java.util.Date;
 @Table(name = "taskinfo")
 public class Taskinfo implements Serializable {
     /**
-     * id
-     */
-    @Id
-    private Integer tiId;
-
-    /**
      * 任务编号
      */
-    @Column(name = "ti_tasknumber")
+    @Id
+
     private String tiTasknumber;
 
     /**
