@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 金币
+ */
 @Data
 @Table(name = "virtualcurrencyrecords")
 public class Virtualcurrencyrecords implements Serializable {

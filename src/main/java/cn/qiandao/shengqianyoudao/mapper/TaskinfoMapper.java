@@ -1,20 +1,14 @@
 package cn.qiandao.shengqianyoudao.mapper;
 
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.javassist.runtime.Desc;
+import tk.mybatis.mapper.common.Mapper;
 
-@Mapper
-public interface TaskinfoMapper {
-    /**
-     * 查询任务详情页信息
-     *
-     * @param tiid 任务id
-     * @return 任务对象
-     */
-//    @Select("select * from taskinfo where ti_id=#{tiid}")
-    Taskinfo selectBytitasknumber(@Param("tiid") int tiid);
+import java.math.BigDecimal;
+import java.util.List;
 
 
-    Taskinfo selectByTiTitle(@Param("tiid") int tiid);
+public interface TaskinfoMapper extends Mapper<Taskinfo> {
 }
