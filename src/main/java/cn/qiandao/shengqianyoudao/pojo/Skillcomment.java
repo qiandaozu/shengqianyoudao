@@ -45,7 +45,7 @@ public class Skillcomment implements Serializable {
     */
     private String scUsernumber;
     @Transient
-    private User user;
+    private Userinfo user;
 
     private static final long serialVersionUID = 1L;
 }
