@@ -6,6 +6,7 @@ import lombok.ToString;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @ToString
 @Table(name = "taskorder")

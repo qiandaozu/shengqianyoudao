@@ -1,6 +1,5 @@
 package cn.qiandao.shengqianyoudao.service;
 
-import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 
 import java.util.List;

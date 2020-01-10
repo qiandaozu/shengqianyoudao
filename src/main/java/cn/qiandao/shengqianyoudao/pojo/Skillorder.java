@@ -1,6 +1,5 @@
 package cn.qiandao.shengqianyoudao.pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 
@@ -14,16 +13,10 @@ import java.util.Date;
 @Table(name = "skillorder")
 public class Skillorder implements Serializable {
     /**
-    * id
-    */
-    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer soId;
-
-    /**
     * 订单编号
     */
-    @Column(name = "so_number")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String soNumber;
 
     /**
@@ -40,13 +33,13 @@ public class Skillorder implements Serializable {
     /**
     * 购买时间
     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date soPurchasingdate;
 
     /**
      * 最后更改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date soEnddate;
 
     /**
@@ -78,5 +71,7 @@ public class Skillorder implements Serializable {
 
     @Transient
     private String title;
+
+
 
 }

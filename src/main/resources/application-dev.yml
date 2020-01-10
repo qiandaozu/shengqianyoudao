@@ -81,3 +81,11 @@ spring:
 
 ---
 
+fdfs:
+  so-timeout: 3000
+  connectTimeout: 2000
+  thumbImage:
+    width: 150
+    height: 150
+  trackerList:
+    - 192.168.25.133:22122

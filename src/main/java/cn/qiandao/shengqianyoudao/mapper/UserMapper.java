@@ -1,6 +1,5 @@
 package cn.qiandao.shengqianyoudao.mapper;
 
-import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import tk.mybatis.mapper.common.Mapper;
 

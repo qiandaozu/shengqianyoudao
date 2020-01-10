@@ -1,7 +1,6 @@
 package cn.qiandao.shengqianyoudao.service.impl;
 
 import cn.qiandao.shengqianyoudao.mapper.UserMapper;
-import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
