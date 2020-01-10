@@ -16,6 +16,7 @@ import java.util.List;
 public class SkilltypeServiceImpl implements SkilltypeService {
     @Autowired
     private SkilltypeMapper skilltypeMapper;
+
     @Override
     public Skilltype selByStNumber(String stNumber){
         Skilltype skilltype = new Skilltype();
@@ -34,8 +35,24 @@ public class SkilltypeServiceImpl implements SkilltypeService {
         return skilltypeMapper.select(skilltype);
     }
 
+    /**
+     * 获取技能的编号
+     * @param skillName
+     * @return
+     */
+    @Override
+    public String getSkillId(String skillName) {
+        Skilltype skilltype = new Skilltype();
+        skilltype.setStContent(skillName);
+        Skilltype skillResult = skilltypeMapper.selectOne(skilltype);
+        return skillResult.getStNumber();
+    }
+
     /*@Override
     public List<Skilltype> getBySonAll(String siFamilyId) {
         return null;
     }*/
+
+
+
 }

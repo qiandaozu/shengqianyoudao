@@ -1,12 +1,17 @@
 package cn.qiandao.shengqianyoudao.controller;
 
-import cn.qiandao.shengqianyoudao.pojo.*;
+import cn.qiandao.shengqianyoudao.pojo.Skillcomment;
+import cn.qiandao.shengqianyoudao.pojo.Skillsinfo;
+import cn.qiandao.shengqianyoudao.pojo.Skilluserrelationship;
+import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.SkillcommentService;
 import cn.qiandao.shengqianyoudao.service.SkillsinfoService;
 import cn.qiandao.shengqianyoudao.service.UserService;
+import cn.qiandao.shengqianyoudao.util.IDUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,5 +67,32 @@ public class SkillsinfoController {
     @ResponseBody
     public Userinfo selectUser(@PathVariable("uid") String uid){
         return userService.findById(uid);
+    }
+
+    //发布技能zrf
+    @RequestMapping("/insertSkill")
+    public String insertSkill(@RequestBody Map userMap){
+        System.out.println(1);
+        System.out.println(userMap);
+        /*userMap.put("userId",userId);
+        userMap.put("siTitle",siTitle);
+        userMap.put("siType",siType);
+        userMap.put("siMoney",siMoney);
+        userMap.put("siDescribe",siDescribe);
+        userMap.put("siDuration",siDuration);
+        userMap.put("siDate",siDate);
+        userMap.put("siImg",siImg);
+        userMap.put("siModifynumber",siModifynumber);*/
+        String putResult = skillsinfoService.pubSkill(userMap);
+        System.out.println(putResult);
+        return putResult;
+    }
+
+    @Autowired
+    static RedisTemplate redisTemplate;
+    public static void main(String[] args) {
+        String skid = (String) redisTemplate.opsForValue().get("技能");
+        String addskill = IDUtil.getNewEquipmentNo("jx",skid);
+        System.out.println(addskill);
     }
 }

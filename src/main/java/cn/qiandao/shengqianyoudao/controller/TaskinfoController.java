@@ -2,9 +2,7 @@ package cn.qiandao.shengqianyoudao.controller;
 
 
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
-import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.TaskinfoService;
-import cn.qiandao.shengqianyoudao.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -50,7 +48,7 @@ public class TaskinfoController {
 
     @GetMapping("/selectUpTask/{type}/{sort}")
     @ApiOperation(value = "任务排序",notes = "任务排序")
-    public List<Taskinfo> selectUp(@PathVariable("type") String type,@PathVariable("sort") String sort){
+    public List<Taskinfo> selectUp(@PathVariable("type") String type, @PathVariable("sort") String sort){
         List<Taskinfo> taskinfos = taskinfoService.selectByExample(type, sort);
         return taskinfos;
     }

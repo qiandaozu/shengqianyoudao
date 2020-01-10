@@ -2,7 +2,6 @@ package cn.qiandao.shengqianyoudao.service;
 
 
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
-import org.apache.ibatis.javassist.runtime.Desc;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public interface TaskinfoService {
      * 价格排序  desc正序  asc倒序
      * @return count
      */
-    List<Taskinfo> selectByExample(String type,String sort);
+    List<Taskinfo> selectByExample(String type, String sort);
 
     /**
      * 查询用户发布的任务

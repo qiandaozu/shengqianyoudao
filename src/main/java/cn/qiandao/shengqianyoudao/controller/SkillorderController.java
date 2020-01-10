@@ -33,13 +33,17 @@ public class SkillorderController {
 
     @ApiOperation(value = "修改订单状态")
     @GetMapping("/updateOrder")
-    public int Order(@RequestParam("orderId") String orderId,@RequestParam("state") int state){
+
+    public int Order(@RequestParam("orderId") String orderId, @RequestParam("state") int state){
+
+
         return skillorderService.updateOrder(orderId,state);
     }
 
     @ApiOperation(value = "查询订单信息")
     @GetMapping("/selectOrder")
-    public  Skillorder killOrder(@RequestParam String orderId){
+
+    public Skillorder killOrder(@RequestParam String orderId){
         return skillorderService.selectOrder(orderId);
     }
 

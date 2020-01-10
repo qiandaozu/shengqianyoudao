@@ -60,7 +60,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping("/ftpvc/{phone}/{fvc}")
     @ResponseBody
-    public String forgetThePassword(@PathVariable("phone") String sphone,@PathVariable("fvc") String fvc){
+    public String forgetThePassword(@PathVariable("phone") String sphone, @PathVariable("fvc") String fvc){
         System.out.println("开始验证忘记密码");
         if (lsi.verificationCode(sphone,fvc)){
             return "修改密码";
@@ -74,7 +74,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping("/gc/{phone}/{number}")
     @ResponseBody
-    public void getCode(@PathVariable("phone") String phone,@PathVariable("number") String number){
+    public void getCode(@PathVariable("phone") String phone, @PathVariable("number") String number){
         System.out.println("准备发送验证码***");
         lsi.getcode(phone,Integer.valueOf(number));
         System.out.println("验证码已发送***");
@@ -84,7 +84,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping("/vcr/{phone}/{vc}/{rpwd}/{icode}")
     @ResponseBody
-    public String verificationCodeRegister(@PathVariable("phone") String phone,@PathVariable("vc") String vc,@PathVariable("rpwd") String rpwd,@PathVariable("icode") String icode,HttpServletResponse response){
+    public String verificationCodeRegister(@PathVariable("phone") String phone, @PathVariable("vc") String vc, @PathVariable("rpwd") String rpwd, @PathVariable("icode") String icode, HttpServletResponse response){
         Boolean b = lsi.verificationCode(phone, vc);
         if(b == null){
             System.out.println("注册验证码错误***");
@@ -102,7 +102,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping("/cp/{phone}/{pwd}")
     @ResponseBody
-    public String changePwd(@PathVariable("phone") String phone,@PathVariable("pwd") String pwd){
+    public String changePwd(@PathVariable("phone") String phone, @PathVariable("pwd") String pwd){
         System.out.println("准备修改密码***");
         return lsi.changePwd(phone,pwd);
     }
