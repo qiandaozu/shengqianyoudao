@@ -1,5 +1,3 @@
-cn\qiandao\shengqianyoudao\service\impl\KillorderServiceImpl.class
-cn\qiandao\shengqianyoudao\util\SensitivewordFilter.class
 cn\qiandao\shengqianyoudao\config\CacheConfig.class
 cn\qiandao\shengqianyoudao\mapper\UserMapper.class
 cn\qiandao\shengqianyoudao\vo\ServiceCoreVO.class
@@ -32,7 +30,6 @@ cn\qiandao\shengqianyoudao\pojo\Skillcomment.class
 cn\qiandao\shengqianyoudao\ShengqianyoudaoApplication.class
 cn\qiandao\shengqianyoudao\service\SkilltypeService.class
 cn\qiandao\shengqianyoudao\mapper\ImagesMapper.class
-cn\qiandao\shengqianyoudao\util\SensitiveWordInit.class
 cn\qiandao\shengqianyoudao\mapper\CashrecordsMapper.class
 cn\qiandao\shengqianyoudao\pojo\Skillorder.class
 cn\qiandao\shengqianyoudao\pojo\Skilltype.class
@@ -50,7 +47,6 @@ cn\qiandao\shengqianyoudao\service\impl\SkillsinfoServiceImpl.class
 cn\qiandao\shengqianyoudao\service\SkillsinfoService.class
 cn\qiandao\shengqianyoudao\controller\SkillcommentController.class
 cn\qiandao\shengqianyoudao\controller\VirtualController.class
-cn\qiandao\shengqianyoudao\service\KillorderService.class
 cn\qiandao\shengqianyoudao\pojo\Taskinfo.class
 cn\qiandao\shengqianyoudao\controller\SkillsinfoController.class
 cn\qiandao\shengqianyoudao\service\impl\CashrecordsServiceImpl.class
