@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: cn.qiandao.shengqianyoudao.ShengqianyoudaoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 77.346 s <<< FAILURE! - in cn.qiandao.shengqianyoudao.ShengqianyoudaoApplicationTests
+contextLoads  Time elapsed: 43.719 s  <<< ERROR!
+java.lang.Exception: getStoreStorage fail, errno code: 0
+	at cn.qiandao.shengqianyoudao.ShengqianyoudaoApplicationTests.contextLoads(ShengqianyoudaoApplicationTests.java:23)
+
