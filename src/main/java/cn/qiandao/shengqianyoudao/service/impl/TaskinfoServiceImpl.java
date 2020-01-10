@@ -3,7 +3,6 @@ package cn.qiandao.shengqianyoudao.service.impl;
 
 import cn.qiandao.shengqianyoudao.mapper.TaskinfoMapper;
 import cn.qiandao.shengqianyoudao.pojo.Taskinfo;
-import cn.qiandao.shengqianyoudao.pojo.User;
 import cn.qiandao.shengqianyoudao.pojo.Userinfo;
 import cn.qiandao.shengqianyoudao.service.TaskinfoService;
 import cn.qiandao.shengqianyoudao.service.UserService;
@@ -11,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;

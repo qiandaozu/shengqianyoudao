@@ -22,7 +22,8 @@ public interface SkillorderService {
      * @param state 状态
      * @return
      */
-    int updateOrder(String orderId,int state);
+
+    int updateOrder(String orderId, int state);
 
     /**
      * 查询订单

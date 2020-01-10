@@ -12,4 +12,5 @@ public interface SkilltypeService {
     Skilltype selByStNumber(String stNumber);
     List<Skilltype> getByFamilyAll(String siFamilyId);
     //List<Skilltype> getBySonAll(String siFamilyId);
+    String getSkillId(String skillName);
 }
